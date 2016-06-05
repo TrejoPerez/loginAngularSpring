@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html >
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        
+        <script src="angular.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body ng-app="LogUsuario">
+        <div ng-controller="ControllerUsuario">
+            Email<input type="text" ng-model="email"><br/>
+            Password <input type="password" ng-model="password">
+            <button ng-click="buscarUsuario()"> Loggin</button>
+            <ul>
+                <li ng-repeat ="post in encontrado">
+                    <h2>{{post.email}}</h2>
+                    <h2>{{post.password}}</h2>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
+
+
