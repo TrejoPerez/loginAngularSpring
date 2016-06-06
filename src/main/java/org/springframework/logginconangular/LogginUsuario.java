@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-public class LogginUsuario implements ServicioLoggin{
+public class LogginUsuario implements ServicioLogin{
 
     public void guardarUsuario(Usuario usuario) {
         DAOUsuario dao = new DAOUsuario();
@@ -25,15 +25,17 @@ public class LogginUsuario implements ServicioLoggin{
         System.out.println("Usuario guardado");
     }
 
-    public ArrayList<Usuario> buscarUsuario(Usuario usuario) {
+    @Override
+    public Usuario buscarUsuario(String email,String password) {
          DAOUsuario dao = new DAOUsuario();
+         Usuario up = new Usuario();
         ArrayList<Usuario> usuarios = new ArrayList();
         try {
-            usuarios = dao.obtenerUsuario(usuario);
+            up = dao.obtenerUsuario(email,password);
         } catch (Exception ex) {
             Logger.getLogger(LogginUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return usuarios;
+        return up;
     }
     
 }

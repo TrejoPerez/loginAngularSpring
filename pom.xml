@@ -6,9 +6,26 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
     	
-    
+    <parent>
+        <!--Con esto ya no indico las versiones que voy a usar-->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.3.5.RELEASE</version>
+    </parent>
     <dependencies>
-        
+        <!--Con esot muestro la pagina de incio -->
+        <dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-thymeleaf</artifactId>
+  	</dependency>
+        <!--Actualzacion en tiempo de ejecucion-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+    
+        <!--Seguridad con Spring-->
+       
          <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>

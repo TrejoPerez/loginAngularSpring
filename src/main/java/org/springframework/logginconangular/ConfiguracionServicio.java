@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ConfiguracionServicio {
     @Bean
-    public ServicioLoggin servicioLoggin(){
+    public ServicioLogin servicioLoggin(){
         return new LogginUsuario();
     }
 }

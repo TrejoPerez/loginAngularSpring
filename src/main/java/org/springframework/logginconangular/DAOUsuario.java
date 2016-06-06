@@ -8,6 +8,7 @@ package org.springframework.logginconangular;
 import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -33,19 +34,28 @@ public class DAOUsuario {
         HibernateUtil.closeSessionFactory();
         return "Usuario guardado con exito";
     }
-    public ArrayList<Usuario> obtenerUsuario(Usuario user) throws Exception{
+    public Usuario obtenerUsuario(String email,String password) throws Exception{
+        Usuario up= new Usuario();
+        up.setEmail(email);
+        up.setPassword(password);
         ArrayList<Usuario> usuario= new ArrayList();
        try{
            usuario = (ArrayList<Usuario>) session.createCriteria(Usuario.class)
-                .add(Restrictions.like("email", user.getEmail()))
-                .add(Restrictions.like("password", user.getPassword()))
+                .add(Restrictions.like("email", up.getEmail()))
+                .add(Restrictions.like("password", up.getPassword()))
                 .list();
+            up = (Usuario) session.createCriteria(Usuario.class)
+                    .add(Restrictions.like("email", up.getEmail()))
+                    .add(Restrictions.like("password",up.getPassword())).uniqueResult();
+            
+            
+                    
            
        }finally{
            HibernateUtil.closeSessionAndUnbindFromThread();
        }
         HibernateUtil.closeSessionFactory();
-        return usuario;
+        return up;
                 
     }
     public Usuario buscarPorId(Integer Id) throws Exception{

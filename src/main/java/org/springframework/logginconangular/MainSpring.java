@@ -8,17 +8,19 @@ package org.springframework.logginconangular;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author root
  */
+
+
 @SpringBootApplication
-
-
-public class MainSpring {
+public class MainSpring{
     public static void main(String[] args) {
-        SpringApplication.run(MainSpring.class,args);
+        SpringApplication.run(MainSpring.class,args);   
     }
+   
 }

@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  * @author root
  */
-public interface ServicioLoggin {
+public interface ServicioLogin {
     public void guardarUsuario(Usuario usuario);
-    public ArrayList<Usuario> buscarUsuario(Usuario usuario);
+    public Usuario buscarUsuario(String email,String password);
     
 }

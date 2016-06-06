@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="LogUsuario">
     <head>
-        <title>Spring Security Example</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+        <script src="./js/controller.js"></script>
     </head>
-    <body >
-        <h1>Este es tu HOME </h1>
-        <input type="submit" value="enviar"/>
+    
+    <body ng-controller="ControllerUsuario">
+        <h1>Al fin funciona :D  </h1>
+        
+        Email <input type="text" ng-model="email"/>
+        Password <input type="password" ng-model="password"/>
+        <button ng-click="buscarUsuario()">Login</button>
+        <ul>
+            <li ng-repeat="post in encontrado">
+                <h1>{{post.idUsuario}}</h1>
+                <h2>{{post.nombre}}</h2>
+                <h3>{{post.email}}</h3>
+                <h4>{{post.password}}</h4>
+            </li>
+        </ul>
+        
+            
     </body>
 </html>

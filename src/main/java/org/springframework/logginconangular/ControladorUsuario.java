@@ -22,16 +22,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/")
 public class ControladorUsuario {
-    @Autowired ServicioLoggin logginUsuarioM;
+    @Autowired ServicioLogin logginUsuarioM;
     
     @CrossOrigin
     @RequestMapping(value = "usuario/{email}/{password}", method = RequestMethod.GET, headers ={"Accept=text/html"})
     @ResponseBody String buscarUsuario(@PathVariable String email,@PathVariable String password) throws Exception{
-        Usuario u  = new Usuario();
-        u.setEmail(email);
-        u.setPassword(password);
+       
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Usuario> usuarios = logginUsuarioM.buscarUsuario(u);
-        return mapper.writeValueAsString(usuarios);
+        Usuario u1 = logginUsuarioM.buscarUsuario(email,password);
+        
+        //ArrayList<Usuario> usuarios = logginUsuarioM.buscarUsuario(u);
+        
+        System.out.println("EL nombre des " + u1.getNombre());
+        return mapper.writeValueAsString(u1);
     }
 }
