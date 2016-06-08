@@ -13,8 +13,9 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-public class LogginUsuario implements ServicioLogin{
+public class LogginUsuario extends Usuario implements ServicioLogin{
 
+    @Override
     public void guardarUsuario(Usuario usuario) {
         DAOUsuario dao = new DAOUsuario();
         try {
@@ -29,13 +30,28 @@ public class LogginUsuario implements ServicioLogin{
     public Usuario buscarUsuario(String email,String password) {
          DAOUsuario dao = new DAOUsuario();
          Usuario up = new Usuario();
-        ArrayList<Usuario> usuarios = new ArrayList();
+       // ArrayList<Usuario> usuarios = new ArrayList();
         try {
             up = dao.obtenerUsuario(email,password);
         } catch (Exception ex) {
             Logger.getLogger(LogginUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return up;
+    }
+
+    @Override
+    public Usuario buscarId(Integer Id) {
+        Usuario usuario = new Usuario();
+            DAOUsuario dao = new DAOUsuario();
+            
+        try {
+             usuario = dao.buscarPorId(Id);
+             System.out.println("el usuario es " + usuario.getNombre());
+        } catch (Exception ex) {
+            
+            System.out.println("El error en el id fue" + ex.getLocalizedMessage() +"->" +ex.getClass() );
+        }
+        return usuario;    
     }
     
 }

@@ -29,11 +29,20 @@ public class ControladorUsuario {
     @ResponseBody String buscarUsuario(@PathVariable String email,@PathVariable String password) throws Exception{
        
         ObjectMapper mapper = new ObjectMapper();
-        Usuario u1 = logginUsuarioM.buscarUsuario(email,password);
         
-        //ArrayList<Usuario> usuarios = logginUsuarioM.buscarUsuario(u);
         
-        System.out.println("EL nombre des " + u1.getNombre());
-        return mapper.writeValueAsString(u1);
+        Usuario usuarios = logginUsuarioM.buscarUsuario("alberto","12345");
+        
+        System.out.println("EL nombre des " + usuarios.getNombre());
+        return mapper.writeValueAsString(usuarios);
     }
+    @CrossOrigin
+    @RequestMapping(value="usuario/{id}", method = RequestMethod.GET,headers={"Accept=application/json"})
+    @ResponseBody String buscarId(@PathVariable Integer id) throws Exception{
+        
+        ObjectMapper mapper = new ObjectMapper();
+        Usuario usuario = logginUsuarioM.buscarId(id);
+        return mapper.writeValueAsString(usuario);
+    }
+    
 }

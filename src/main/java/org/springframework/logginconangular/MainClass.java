@@ -24,7 +24,8 @@ public class MainClass {
         u.setEmail(n);
         u.setPassword(m);
         try{
-            u2 = ls.buscarUsuario(u);
+            //u2 = ls.buscarUsuario("alberto","12345");
+            u2 = dao.obtenerUsuario("alberto", "12345");
         System.out.println("El email es " +u2.getEmail() + "el ide es -> " + u2.getIdUsuario() + "El nombre es ->" + u2.getNombre());
         }catch(Exception e){
             System.out.println("El usuario no existe");
@@ -41,5 +42,5 @@ public class MainClass {
         }
         
     }
-*/
+    */
 }

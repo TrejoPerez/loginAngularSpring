@@ -7,8 +7,9 @@ package org.springframework.logginconangular;
 
 import java.util.ArrayList;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.MatchMode;
+import org.hibernate.SessionFactory;
+
+
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -17,17 +18,21 @@ import org.hibernate.criterion.Restrictions;
  */
 public class DAOUsuario {
      public Session session;
-    public Transaction transaction;
+    
     public DAOUsuario() {
-        HibernateUtil.buildSessionFactory();
-             session = HibernateUtil.getSessionFactory().getCurrentSession();
-             transaction = session.beginTransaction();
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            HibernateUtil.buildSessionFactory();
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            //session = sessionFactory.getCurrentSession();
+            //transaction = session.beginTransaction();
         
     }
     
     public String guardar(Usuario usuario)throws Exception{
         try{
             session.save(usuario);
+            
         }finally{
             HibernateUtil.closeSessionAndUnbindFromThread();
         }
@@ -36,17 +41,17 @@ public class DAOUsuario {
     }
     public Usuario obtenerUsuario(String email,String password) throws Exception{
         Usuario up= new Usuario();
-        up.setEmail(email);
-        up.setPassword(password);
-        ArrayList<Usuario> usuario= new ArrayList();
+        
+        //ArrayList<Usuario> usuario= new ArrayList();
        try{
-           usuario = (ArrayList<Usuario>) session.createCriteria(Usuario.class)
+           /*usuario = (ArrayList<Usuario>) session.createCriteria(Usuario.class)
                 .add(Restrictions.like("email", up.getEmail()))
                 .add(Restrictions.like("password", up.getPassword()))
                 .list();
+            */    
             up = (Usuario) session.createCriteria(Usuario.class)
-                    .add(Restrictions.like("email", up.getEmail()))
-                    .add(Restrictions.like("password",up.getPassword())).uniqueResult();
+                    .add(Restrictions.like("email", email))
+                    .add(Restrictions.like("password",password)).uniqueResult();
             
             
                     

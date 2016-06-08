@@ -14,5 +14,6 @@ import java.util.ArrayList;
 public interface ServicioLogin {
     public void guardarUsuario(Usuario usuario);
     public Usuario buscarUsuario(String email,String password);
+    public Usuario buscarId(Integer Id);
     
 }

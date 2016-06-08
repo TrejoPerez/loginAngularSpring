@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @author campitos
  */
 @Component
-public class miTomcatsito implements EmbeddedServletContainerCustomizer{
+public class miTomcat implements EmbeddedServletContainerCustomizer{
 
     @Override
     public void customize(ConfigurableEmbeddedServletContainer cesc) {
