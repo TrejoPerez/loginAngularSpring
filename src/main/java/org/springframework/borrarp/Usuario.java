@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.logginconangular;
+package org.springframework.borrarp;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
     @Id
     @Column(name="id_usuario")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer idUsuario;
     @Column(name="nombre")
     private String nombre;

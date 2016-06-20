@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.logginconangular;
+package org.springframework.borrarp;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface ServicioLogin {
     public void guardarUsuario(Usuario usuario);
-    public Usuario buscarUsuario(String email,String password);
+    public ArrayList<Usuario> buscarUsuario(String email,String password);
     public Usuario buscarId(Integer Id);
     
 }

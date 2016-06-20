@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.logginconangular;
+package org.springframework.borrarp;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -27,16 +27,15 @@ public class LogginUsuario extends Usuario implements ServicioLogin{
     }
 
     @Override
-    public Usuario buscarUsuario(String email,String password) {
+    public ArrayList<Usuario> buscarUsuario(String email,String password) {
          DAOUsuario dao = new DAOUsuario();
-         Usuario up = new Usuario();
-       // ArrayList<Usuario> usuarios = new ArrayList();
+        ArrayList<Usuario> usuarios = new ArrayList();
         try {
-            up = dao.obtenerUsuario(email,password);
+          usuarios = dao.obtenerUsuario(email,password);
         } catch (Exception ex) {
             Logger.getLogger(LogginUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return up;
+        return usuarios;
     }
 
     @Override
@@ -46,10 +45,9 @@ public class LogginUsuario extends Usuario implements ServicioLogin{
             
         try {
              usuario = dao.buscarPorId(Id);
-             System.out.println("el usuario es " + usuario.getNombre());
         } catch (Exception ex) {
             
-            System.out.println("El error en el id fue" + ex.getLocalizedMessage() +"->" +ex.getClass() );
+              Logger.getLogger(LogginUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usuario;    
     }

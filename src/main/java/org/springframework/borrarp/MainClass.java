@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.springframework.logginconangular;
+package org.springframework.borrarp;
 
 import java.util.ArrayList;
 
@@ -12,25 +12,25 @@ import java.util.ArrayList;
  * @author root
  */
 public class MainClass {
-    /*
+/*
     public static void main(String[] args) throws Exception {
-        String n="alberto";
-        String m ="12345";
-        LogginUsuario ls = new LogginUsuario();
-                
+        String n = "alberto";
+        String m = "12345";
+        //LogginUsuario ls = new LogginUsuario();
+
         Usuario u = new Usuario();
         Usuario u2 = new Usuario();
         DAOUsuario dao = new DAOUsuario();
         u.setEmail(n);
         u.setPassword(m);
-        try{
+        try {
             //u2 = ls.buscarUsuario("alberto","12345");
-            u2 = dao.obtenerUsuario("alberto", "12345");
-        System.out.println("El email es " +u2.getEmail() + "el ide es -> " + u2.getIdUsuario() + "El nombre es ->" + u2.getNombre());
-        }catch(Exception e){
+            u2 = dao.buscarPorId(3);
+            System.out.println("El email es " + u2.getEmail() + "el ide es -> " + u2.getIdUsuario() + "El nombre es ->" + u2.getNombre());
+        } catch (Exception e) {
             System.out.println("El usuario no existe");
         }
-        
+
         /*
         ArrayList<Usuario> usuarios =dao.obtenerUsuario(u);
         if(usuarios.size()> 0){
@@ -40,7 +40,7 @@ public class MainClass {
         }else{
             System.out.println("El usuario no existe");
         }
-        
+         
     }
-    */
+*/
 }
